@@ -1,0 +1,174 @@
+
+<div class="row">
+     <h1 class="nuevo">
+        <!--<button class="btn btn-info mb-1" data-bs-target="#newPersona" data-bs-toggle="modal"> Nuevo</button>
+     --> 
+        <td *ngIf="isAdmin"> 
+            <a href="#" class="btn-right"><i class="fa-solid fa-circle-plus fa-sm" data-bs-target="#newPersona" data-bs-toggle="modal"></i></a>
+        </td>
+    </h1>
+    
+    <div class="row" id="row2" *ngFor="let persona of personasList">
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 ">
+            <img id="fotoperfil" [src]="persona.urlimage" class="fotoperfil img-fluid rounded-circle" >
+        </div>
+        <div id="nombre" class="col-xs-12 col-sm-4 col-md-2 col-lg-2 col-xl-2">
+
+            <p>{{persona.nombre}} {{persona.apellido}}</p>
+            <hr>
+            <div>
+                <p>{{persona.edad}} años </p>
+                <p>{{persona.seniority}} </p>
+                <p>{{persona.company}}</p>
+                <p>{{persona.position}}</p>
+
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+            <span>
+               
+                <p class="about">{{persona.abouts}}</p>
+                <!--<button class="btn btn-warning mb-3" (click)="getPersonaEdit(persona)" data-bs-target="#editPersona" data-bs-toggle="modal">Editar</button>
+                <button class="btn btn-danger mb-3" (click)="borrarPersonaDeLista(persona)"><i class="fas fa-trash">Eliminar</i></button>
+                 -->
+                <!--<div  class="btn-edit" *ngIf="isAdmin">-->
+                <div > 
+                    <td *ngIf="isAdmin"><a href="#" class="btn-right"><i class="fa-solid fa-pen-to-square fa-xl fa-fw" (click)="getPersonaEdit(persona)" data-bs-target="#editPersona" data-bs-toggle="modal"></i></a>  
+                    </td>
+                    <td *ngIf="isAdmin"><a href="#" class="btn-right"><i class="fa-solid fa-trash fa-xl fa-fw" (click)="borrarPersonaDeLista(persona)"></i></a> 
+                    </td>
+                </div>   
+            </span>
+        </div>
+    </div>
+
+</div>
+
+<!--Edicion-->
+<div class="modal fade" id="editPersona" tabindex="-1" role="dialog"
+    aria-labelledby="editPersonaLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editPersonaLabel">Editar Persona</h5>
+            </div>
+            <div *ngIf="personaEdit" class="modal-body">
+                <form novalidate #f="ngForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" 
+                        [(ngModel)]="personaEdit.nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" name="apellido" 
+                        [(ngModel)]="personaEdit.apellido" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fechaNac">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control" id="fechaNac" name="fechaNac" 
+                        [(ngModel)]="personaEdit.fechaNac" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="seniority">Seniority</label>
+                        <input type="text" class="form-control" id="seniority" name="seniority"
+                            [(ngModel)]="personaEdit.seniority" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="urlimage">Image</label>
+                        <input type="text" class="form-control" id="urlimage" name="urlimage"
+                            [(ngModel)]="personaEdit.urlimage" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">company</label>
+                        <input type="text" class="form-control" id="company" name="company" [(ngModel)]="personaEdit.company">
+                    </div>
+                    <div class="form-group">
+                        <label for="position">position</label>
+                        <input type="text" class="form-control" id="position" name="position"
+                            [(ngModel)]="personaEdit.position" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="abouts">About me</label>
+                        <input type="text" class="form-control" id="abouts" name="abouts" 
+                        [(ngModel)]="personaEdit.abouts" required>
+                    </div>
+                    <!--
+                    <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">Actualizar</button>
+                    -->
+                    
+                    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" (click)="modificarPersona(personaEdit.id)" data-bs-target="#editPersona" data-bs-toggle="modal">modificar</button>
+                <button type="button" class="btn btn-info" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Nuevo-->
+
+<div class="modal fade" id="newPersona" tabindex="-1" role="dialog"
+    aria-labelledby="newPersonaLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newPersonaLabel">Crear Persona</h5>
+            </div>
+            <div class="modal-body">
+            <form novalidate #f="ngForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" 
+                        [(ngModel)]="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="apellido">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" name="apellido" 
+                        [(ngModel)]="apellido" required>
+                </div>
+                <div class="form-group">
+                    <label for="fechaNac">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" id="fechaNac" name="fechaNac" 
+                    [(ngModel)]="fechaNac" required>
+                </div>
+                <div class="form-group">
+                    <label for="seniority">Seniority</label>
+                        <input type="text" class="form-control" id="seniority" name="seniority" 
+                        [(ngModel)]="seniority" >
+
+                </div>
+                <div class="form-group">
+                    <label for="urlimage">Image</label>
+                        <input type="text" class="form-control" id="urlimage" name="urlimage" 
+                        [(ngModel)]="urlimage" >
+
+                </div>
+                <div class="form-group">
+                    <label for="company">company</label>
+                        <input type="text" class="form-control" id="company" name="company" 
+                        [(ngModel)]="company" >
+                </div>
+
+                <div class="form-group">
+                    <label for="position">position</label>
+                        <input type="text" class="form-control" id="position" name="position" 
+                        [(ngModel)]="position" >
+                </div>
+                <div class="form-group">
+                    <label for="position">About me</label>
+                        <input type="text" class="form-control" id="aboutMe" name="position" 
+                        [(ngModel)]="abouts" >
+                </div>
+                <br>
+                <button class="btn btn-danger" [disabled]="!f.valid" (click)="onCreate()">Crear</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
+</div>

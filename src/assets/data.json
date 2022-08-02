@@ -1,0 +1,98 @@
+
+    {
+        "id":"1",
+        "name": "Karina Beatriz Bouza",
+        "age":"36",
+        "backImage": "#",
+        "image": "https://i2.wp.com/imagenes.milenio.com/E-yJnq9EhkZhWaU7T_2utkyTymQ=/958x596/smart/https://www.milenio.com/uploads/media/2018/10/05/steve-jobs-perdio-vida-consecuencia_0_199_1193_742.jpg?w=640&ssl=1",
+        "position": "Fullstack Developer jr.",
+        "company": {
+            "name": "CONICET",
+            "img": "https://convocatorias.conicet.gov.ar/wp-content/uploads/logo-CONICET_opt.png",
+            "url": "#"
+        },
+        "school": {
+            "name": "UNSAM",
+            "img": "#",
+            "url": "www.unsam.edu.ar"
+        },
+        "ubication": "General San Martín (Argentina) ",
+        "about": "Student Programming, cares about technology, databases,etc. Cares about learning, better techniques of coding, Actually in second year of software developer. ",
+        "experience": [{
+            "position": "Fullstack Developer jr.",
+            "company": "I hope to be in someone..",
+            "img": "#",
+            "mode": "########",
+            "start": "2008",
+            "end": "-",
+            "timeElapsed": "2 años y 6 meses"
+        }],
+        "education": [{
+                "school": "CFPNº402",
+                "title": "Programador aplicaciones Informáticas en python",
+                "img": "#####",
+                "career": "curso",
+                "score": 100,
+                "start": "2020",
+                "end": "2021"
+            },
+            {
+                "school": "argentinaPrograma",
+                "title": "seProgramar",
+                "img": "#####",
+                "career": "Full Stack developer",
+                "score": 100,
+                "start": "2021",
+                "end": "2021"
+            },
+            {
+                "school": "argentinaPrograma",
+                "title": "Desarrollador Full Stack Jr.",
+                "img": "https://media-exp1.licdn.com/dms/image/C4E0BAQFhOoraRhsOSQ/company-logo_100_100/0/1590421269154?e=1637798400&v=beta&t=gyinTA0GPG1xIBDPj01L33mQHcdOdyMOdpoRHY640Pc",
+                "career": "Web fullStack developer",
+                "score": 0,
+                "start": "2022",
+                "end": "2022"
+            }
+        ],
+        "aptitudes": [{
+                "name": "Resolución de problemas",
+                "progress": 50,
+                "confirms": 1,
+                "confirmsNames": [{
+                    "name": "####"
+                }],
+                "color":"#FF0000"
+            },
+            {
+                "name": "Fullstack developer jr.",
+                "progress": 15,
+                "confirms": 1,
+                "confirmsNames": [{
+                    "name": "Hernán Borré"
+                }],
+                "color":"#AD8340"
+            },
+            {
+                "name": "Trabajo colaborativo",
+                "progress": 45,
+                "confirms": 1,
+                "confirmsNames": [{
+                    "name": "Veronica Manzano"
+                }],
+                "color":"#AD8340"
+            }
+        ],
+        "achivements": [{
+                "name": "Proyecto 1",
+                "img": "..//../../assets/proy1.png"
+                
+            },
+            {
+                "name": "Veterinaria turnero",
+                "img": "..//../../assets/proy1.png"
+            }
+        ]
+    
+    
+    }

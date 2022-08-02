@@ -1,0 +1,153 @@
+
+<div class="row">
+    <div class="btn-edit"> 
+        <h1>Educacion <br>
+            <hr>
+            <td *ngIf="isAdmin"><a href="#" class="btn-right"><i class="fa-solid fa-circle-plus fa-xs" data-bs-target="#newEducation" data-bs-toggle="modal"></i></a>
+            </td>
+            </h1>
+    </div>
+
+    <div >
+   <div class="col-lg-1"></div>
+    <div class="col-lg-11">
+        
+        <ul class="item-list">
+            <li *ngFor="let education of listEducation">
+                <div class="data-container">
+                <div class="row">
+                    <div class="col-sm-11 col-md-2 col-lg-2 offset-md-0 offset-lg-0 parte2">
+                        <img src={{education.urlimg}} class="img-fluid img-education">
+                        </div>
+                    <div class="col-sm-11 col-md-7 col-lg-7 parte1">
+                        <h4>Educación: {{education.school}} </h4> 
+                        <h4>Título: {{education.title}} - 
+                        ( {{education.starts}} - {{education.ends}} ) </h4>
+                        <div class="btn-edit"> 
+                        <h4>{{education.status}}
+                            <td *ngIf="isAdmin"><a href="#" class="btn-right"><i class="fa-solid fa-pen-to-square fa-m fa-fw" (click)="getEducationEdit(education)" data-bs-target="#editEducation" data-bs-toggle="modal"></i></a>  
+                            </td>
+                        <td *ngIf="isAdmin"><a href="#" class="btn-right"><i class="fa-solid fa-trash fa-m fa-fw" (click)="borrarEducationDeLista(education)"></i></a> 
+                        </td> 
+                        </h4> 
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    </div>
+</div>
+
+<!--Edicion-->
+<div class="modal fade" id="editEducation" tabindex="-1" role="dialog"
+    aria-labelledby="editEducationLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editEducationLabel">Editar Educacion</h5>
+            </div>
+            <div *ngIf="editEducaList" class="modal-body">
+                <form novalidate #f="ngForm">
+                    <div class="form-group">
+                        <label for="title">Titulo: </label>
+                        <input type="text" class="form-control" id="title" name="title"
+                        [(ngModel)]="editEducaList.title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="starts">Inicio: </label>
+                        <input type="number" class="form-control" id="starts" name="starts"
+                        [(ngModel)]="editEducaList.starts" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ends">Fin: </label>
+                        <input type="number" class="form-control" id="ends" name="ends"
+                        [(ngModel)]="editEducaList.ends" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="school">Institución</label>
+                        <input type="text" class="form-control" id="school" name="school"
+                        [(ngModel)]="editEducaList.school" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Estado:  </label>
+                        <input type="text" class="form-control" id="status" name="status"
+                        [(ngModel)]="editEducaList.status" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="urlimg">UrlImage:  </label>
+                        <input type="text" class="form-control" id="urlimg" name="urlimg"
+                        [(ngModel)]="editEducaList.urlimg" required>
+                    </div>
+                    <!--
+                    <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">Actualizar</button>
+                    -->
+                   
+                    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" (click)="modificarEducacion(editEducaList.id)" data-bs-target="#editEducation" data-bs-toggle="modal">modificar</button>
+                <button type="button" class="btn btn-info" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Nuevo-->
+
+<div class="modal fade" id="newEducation" tabindex="-1" role="dialog"
+    aria-labelledby="newEducationLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newEducationLabel">Crear Educacion</h5>
+            </div>
+            <div class="modal-body">
+            <form novalidate #f="ngForm">
+                <div class="form-group">
+                    <label for="title">Educación</label>
+                        <input type="text" class="form-control" id="title" name="title" 
+                        [(ngModel)]="title" required>
+
+                </div>
+                <div class="form-group">
+                    <label for="edad">Inicio</label>
+                        <input type="number" class="form-control" id="starts" name="starts" 
+                        [(ngModel)]="starts" >
+                    
+                </div>
+                <div class="form-group">
+                    <label for="ends">fin:</label>
+                        <input type="number" class="form-control" id="ends" name="ends" 
+                        [(ngModel)]="ends" >
+
+                </div>
+            
+                <div class="form-group">
+                    <label for="school">Establecimiento/institución   </label>
+                        <input type="text" class="form-control" id="school" name="school" 
+                        [(ngModel)]="school" >
+                </div>
+                <div class="form-group">
+                    <label for="status">Estado</label>
+                        <input type="text" class="form-control" id="status" name="status" 
+                        [(ngModel)]="status" >
+                </div>
+                <div class="form-group">
+                    <label for="urlimg">UrlImg</label>
+                        <input type="text" class="form-control" id="urlimg" name="urlimg" 
+                        [(ngModel)]="urlimg" >
+                </div>
+                <br>
+                
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-danger" [disabled]="!f.valid" (click)="onCreate()">Crear</button>
+            <button type="button" class="btn btn-info" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
+</div>

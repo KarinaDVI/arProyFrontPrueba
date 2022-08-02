@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+div{
+    max-width:inherit;
+    opacity:50;
+    color:antiquewhite;
+    flex-shrink: 1;
+    font-size:medium;
+}
+.parte1, .parte2{
+    display: inline-block;
+    text-align: justify;
+}
+
+ul{
+    list-style: none;
+}
+
+body{
+    /*background-color:rgb(73, 63, 55);*/
+    background-image: URL("../../../assets/3153478.jpg");
+    background-size:initial;
+    align-items: center;
+}
+
+i{
+    color:antiquewhite;
+}
+h4 > .ispan{
+    padding-inline-start: 40px;
+    padding-inline-end: 10px;
+
+}
+.card{
+    background-color:initial;
+}
+.modal-content{
+    background-color: rgba(20, 18, 19, 0.521);
+}
+.fa-circle-plus{
+    color:rgb(113, 230, 109);
+}
+.fa-trash{
+    color:rgb(245, 138, 138);
+}
+.fa-pen-to-square{
+    color:rgb(247, 247, 140);
+}
+
+

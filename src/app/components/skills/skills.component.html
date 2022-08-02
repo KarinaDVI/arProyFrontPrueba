@@ -1,0 +1,158 @@
+
+<!--Visualizacion-->
+<div class="card" >
+    <div class="card-body">
+        <div class="btn-edit"> 
+            <h1>Hard & Soft Skills  <!--<button class="btn btn-info mb-1" data-bs-target="#newEducation" data-bs-toggle="modal"> Nuevo</button>-->
+                <br>
+            <hr>
+                <td *ngIf="isAdmin"><a href="#" class="btn-right"><i class="fa-solid fa-circle-plus fa-xs" data-bs-target="#newSkill" data-bs-toggle="modal"></i></a>
+                </td>
+            </h1>
+        </div>
+        <div class="row">
+            <div class="text-center col-xs-1 col-sm-5 col-md-5 col-lg-4 padding"
+                title= {{skill.name}} *ngFor="let skill of skillsList ; let i=index" >
+                <circle-progress class="circle"
+                    [title]="skill.name" 
+                    [titleColor]="'white'" 
+                    [titleFontSize]="'1em'"
+                    [showSubtitle]="true" 
+                    [showUnits]="false" 
+                    [percent]="skill.progress" 
+                    [radius]="90"
+                    [imageSrc]="skill.imageSrc"
+                    [showImage]="true"
+                    [imageHeight]="70"
+                    [imageWidth]="70"
+                    [outerStrokeWidth]="16" 
+                    [innerStrokeWidth]="8" 
+                    [outerStrokeColor]="skill.outerStrokeColor"
+                    [innerStrokeColor]="skill.innerStrokeColor" 
+                    [animation]="true" 
+                    [animationDuration]="300">
+
+                </circle-progress>
+                <div class="btn-edit">
+                <h4>Confirmado por: {{skill.confirmsNames}}
+                     
+                    <td *ngIf="isAdmin"><a href="#" class="btn-right"><i class="fa-solid fa-pen-to-square fa-sm fa-fw" (click)="getSkillEdit(skill)" data-bs-target="#editSkill" data-bs-toggle="modal"  ></i></a>  
+                    </td>
+                    <td *ngIf="isAdmin"><a href="#" class="btn-right"><i class="fa-solid fa-trash fa-sm fa-fw" (click)="borrarSkillDeLista(skill)"></i></a> 
+                    </td> 
+                </h4> 
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--Edicion-->
+<div class="modal fade" id="editSkill" tabindex="-1" role="dialog"
+    aria-labelledby="editSkillLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editSkillLabel">Editar Skill</h5>
+            </div>
+            <div *ngIf="listSkill" class="modal-body">
+                <form novalidate #f="ngForm">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="listSkill.name"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="progress">Progreso</label>
+                        <input type="number" class="form-control" id="progress" name="progress"
+                            [(ngModel)]="listSkill.progress" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmsNames">Confirmado por: </label>
+                        <input type="text" class="form-control" id="confirmsNames" name="confirmsNames"
+                            [(ngModel)]="listSkill.confirmsNames" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="imageSrc">imageSrc</label>
+                        <input type="text" class="form-control" id="imageSrc" name="imageSrc"
+                            [(ngModel)]="listSkill.imageSrc" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="outerStrokeColor">outerStrokeColor</label>
+                        <input type="color" class="form-control" id="outerStrokeColor" name="outerStrokeColor"
+                            [(ngModel)]="listSkill.outerStrokeColor" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="innerStrokeColor">innerStrokeColor</label>
+                        <input type="color" class="form-control" id="innerStrokeColor" name="innerStrokeColor"
+                            [(ngModel)]="listSkill.innerStrokeColor" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" (click)="modificarSkill(listSkill.id)" data-bs-target="#editSkill" data-bs-toggle="modal">modificar</button>
+                <button type="button" class="btn btn-info" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Nuevo-->
+
+<div class="modal fade" id="newSkill" tabindex="-1" role="dialog"
+    aria-labelledby="newSkillLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newSkillLabel">Nuevo Skill</h5>
+            </div>
+            <div class="modal-body">
+            <form novalidate #f="ngForm">
+                <div class="form-group">
+                    <label for="name">Aptitud</label>
+                        <input type="text" class="form-control" id="name" name="name" 
+                        [(ngModel)]="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="edad">Progreso</label>
+                        <input type="number" class="form-control" id="progress" name="progress" 
+                        [(ngModel)]="progress" >
+                    
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmsNames">Confirmado por:   </label>
+                        <input type="text" class="form-control" id="confirmsNames" name="confirmsNames" 
+                        [(ngModel)]="confirmsNames" >
+                </div>
+
+                <div class="form-group">
+                    <label for="imageSrc">imageSrc</label>
+                    <input type="text" class="form-control" id="imageSrc" name="imageSrc"
+                        [(ngModel)]="imageSrc" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmsNames">circulo externo</label>
+                        <input id=#selectOuter type="color" class="form-control" id="outerStrokeColor" name="outerStrokeColor" 
+                        [(ngModel)]="outerStrokeColor" >
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmsNames">Circulo interno</label>
+                        <input id=#selectInner type="color" class="form-control" id="innerStrokeColor" name="innerStrokeColor" value="innerStrokeColor"
+                        [(ngModel)]="innerStrokeColor" >
+                </div>
+                <br>
+                <button class="btn btn-danger" [disabled]="!f.valid" (click)="onCreate()">Crear</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
+</div>

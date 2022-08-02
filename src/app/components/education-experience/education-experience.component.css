@@ -1,0 +1,19 @@
+.row{
+    padding:30px;
+}
+
+h1, h3{
+    display:inline
+   
+}
+
+.border{
+    padding:40px;
+    border:0px;
+}
+.btn-group{
+    justify-content:end;
+}
+ul{
+    list-style:none;
+}
