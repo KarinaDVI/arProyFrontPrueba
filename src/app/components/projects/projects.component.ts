@@ -45,7 +45,7 @@ export class ProjectsComponent implements OnInit {
       //const id = this.activatedRoute.snapshot.params['id'];
 
       this.projectService.getProject(project.id!).subscribe(
-        (data) => {
+        data => {
           this.listProject = data;
         });
         
@@ -59,8 +59,15 @@ export class ProjectsComponent implements OnInit {
     //const id = this.activatedRoute.snapshot.params['id'];
     const id = this.listProject.id
     this.projectService.updateProject(id, this.listProject).subscribe(
+      data => {
+        alert("Proyecto modificada");
+        window.location.reload();
+        
+      }, err =>{
+        alert("Error al modificar proyecto");
+        window.location.reload();
+     }
     );
-    window.location.reload();
   }
   onCreate():void{
     const newProject = new Project(this.name,this.aboutProject, this.urlimg);
@@ -74,6 +81,7 @@ export class ProjectsComponent implements OnInit {
 
   modificarProject(projectId: number) {
     this.projectService.updateProject(projectId, this.listProject).subscribe();
+    alert("Proyecto modificado");
     window.location.reload();
   }
 }

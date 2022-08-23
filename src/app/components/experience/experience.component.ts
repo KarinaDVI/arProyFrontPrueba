@@ -52,7 +52,7 @@ import { TokenService } from 'src/app/services/token.service';
       getExperienceEdit(experience: Experience): void {
         //const id = this.activatedRoute.snapshot.params['id'];
         this.expeService.getExperience(experience.id!).subscribe(
-          (data) => {
+          data => {
             this.editExpeList = data;
           });
       }
@@ -60,6 +60,7 @@ import { TokenService } from 'src/app/services/token.service';
         borrarExperienceDeLista(experienceParaBorrar: Experience): void{
           this.listExperience= this.listExperience.filter(p => p.id !== experienceParaBorrar.id)
           this.expeService.deleteExperience(this.listExperience, experienceParaBorrar).subscribe();
+          alert("Experiencia borrada");
           window.location.reload();
         }
 
@@ -67,8 +68,15 @@ import { TokenService } from 'src/app/services/token.service';
           //const id = this.activatedRoute.snapshot.params['id'];
           const id = this.editExpeList.id
           this.expeService.updateExperience(id, this.editExpeList).subscribe(
+            data => {
+              alert("Experiencia modificada");
+              window.location.reload();
+              
+            }, err =>{
+              alert("Error al modificar experiencia");
+              window.location.reload();
+           }
           );
-          window.location.reload();
         }
     
         onCreate(): void {
@@ -85,11 +93,11 @@ import { TokenService } from 'src/app/services/token.service';
         }
     
         modificarExperiencia(expeId: number) {
-          this.expeService.updateExperience(expeId, this.editExpeList).subscribe();
-          window.location.reload();
-        }
+          this.expeService.updateExperience(expeId, this.editExpeList).subscribe()
+        alert("Experiecnia modificada");
     
     }
+  }
       
     
 

@@ -51,7 +51,7 @@ export class SkillsComponent implements OnInit {
   getSkillEdit(skill: Skill): void {
     
     this.skillsDataService.getSkill(skill.id!).subscribe(
-      (data) => {
+      data => {
         this.listSkill = data;
       });
   }
@@ -65,10 +65,15 @@ export class SkillsComponent implements OnInit {
   onUpdate(): void {
     const idj = this.listSkill.id
     this.skillsDataService.updateSkill(idj, this.listSkill).subscribe(
-      
+      data => {
+        alert("Skill modificada");
+        window.location.reload();
+        
+      }, err =>{
+        alert("Error al modificar skill");
+        window.location.reload();
+     }
     );
-    alert("skills modificado");
-    window.location.reload();
   }
   onCreate():void{
 
@@ -85,6 +90,7 @@ export class SkillsComponent implements OnInit {
   
   modificarSkill(skillId: number) {
     this.skillsDataService.updateSkill(skillId, this.listSkill).subscribe();
+    alert("Skill modificado");
     window.location.reload();
   }
  

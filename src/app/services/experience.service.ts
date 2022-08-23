@@ -8,7 +8,8 @@ import { Experience } from '../models/Experience';
 })
 export class ExperienceService {
 
-  experienceUrl = 'https://apikbhero.herokuapp.com'
+  //experienceUrl ='http://localhost:8080/'
+  experienceUrl = 'https://apikbprueba.herokuapp.com/'
 
   constructor(private http:HttpClient) { }
 
@@ -21,25 +22,25 @@ export class ExperienceService {
 }
 
   getAllExperience(): Observable<Experience[]>{
-    return this.http.get<Experience[]>(this.experienceUrl+'/apikb/experience/all').pipe(
+    return this.http.get<Experience[]>(this.experienceUrl+'apikb/experience/all').pipe(
       catchError(this.handleError<Experience[]>('getAllExperience',[]))
   );
 }
   public saveExperience(newExperience:Experience):Observable<any>{
-    return this.http.post<any>(this.experienceUrl + '/apikb/experience/',newExperience);
+    return this.http.post<any>(this.experienceUrl + 'apikb/experience/',newExperience);
   }
 
   public getExperience(id: number):Observable<Experience> {
-    return this.http.get<Experience>(this.experienceUrl + `/apikb/experience/one/${id}`);
+    return this.http.get<Experience>(this.experienceUrl + `apikb/experience/one/${id}`);
   }
  
   public updateExperience(id:number, experience:Experience):Observable<any>{
-    return this.http.put<any>(this.experienceUrl + `/apikb/experience/edit/${id}`,experience);
+    return this.http.put<any>(this.experienceUrl + `apikb/experience/edit/${id}`,experience);
   }
 
   public deleteExperience(experienceList: Experience[], experienceParaBorrar: Experience ): 
   Observable<Experience> {experienceList.filter(p => p.id !== experienceParaBorrar.id)
-    return this.http.delete<any>(this.experienceUrl + "/apikb/experience/" + experienceParaBorrar.id);
+    return this.http.delete<any>(this.experienceUrl + "apikb/experience/" + experienceParaBorrar.id);
   }
 
   

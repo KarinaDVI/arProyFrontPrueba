@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/auth/login.component';
-import { Routes, RouterModule } from '@angular/router';
 import { RegistroComponent } from './components/auth/registro.component';
 import { HomeComponent } from './components/home/home.component';
-import { GuardGuard } from './services/guard.guard';
 //import { PortfolioComponent } from './components/portfolio/portfolio.component';
 
 const routes: Routes = [
@@ -12,7 +11,7 @@ const routes: Routes = [
   {path:'',component: HomeComponent},
   {path:'login',component: LoginComponent},
   //{path:'experienceEdit/:id',component: EditSkillComponent},
-  {path: 'registro',component: RegistroComponent},
+  {path: 'registro',component: RegistroComponent}
   //{path:'',redirectTo:'home',pathMatch:'full'},
   //{path: '', redirectTo: '', pathMatch: 'full'},
   //,

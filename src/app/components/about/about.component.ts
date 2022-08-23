@@ -48,7 +48,7 @@ export class AboutComponent implements OnInit {
     getPersonaEdit(person: Persona): void {
 
       this.datosPersona.getPersona(person.id!).subscribe(
-        (data) => {
+        data => {
           this.personaEdit = data;
         });
     }
@@ -58,17 +58,24 @@ export class AboutComponent implements OnInit {
     this.datosPersona.deletePersona(this.personasList, personaParaBorrar).subscribe();
     window.location.reload();
   }
+  
   onUpdate(): void {
 
     const idp = this.personaEdit.id
     this.datosPersona.updatePersona(idp, this.personaEdit).subscribe(
+      data => {
+        alert("Persona modificada");
+        window.location.reload();
+        
+      }, err =>{
+        alert("Error al modificar persona");
+        window.location.reload();
+     }
     );
-
-    window.location.reload();
   }
 
   onCreate():void{
-    const newPersona = new Persona(this.nombre,this.apellido,this.edad,this.fechaNac,this.seniority,
+    const newPersona = new Persona(this.nombre,this.apellido,this.fechaNac,this.seniority,
       this.urlimage,this.company,this.position,this.abouts);
 
     this.datosPersona.savePersona(newPersona).subscribe(
@@ -76,12 +83,12 @@ export class AboutComponent implements OnInit {
         alert("About creado");
       }
     )
-    window.location.reload();
+    alert("Acerca de mi creado")!;
   }
 
   modificarPersona(personaId:number){
     this.datosPersona.updatePersona(personaId, this.personaEdit).subscribe();
-    window.location.reload();
+    alert("Persona modificada");
   }
 
 

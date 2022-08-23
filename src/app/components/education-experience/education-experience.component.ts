@@ -54,7 +54,7 @@ isAdmin = false;
       //const id = this.activatedRoute.snapshot.params['id'];
       
       this.educationService.getEducation(education.id!).subscribe(
-        (data) => {
+        data => {
           this.editEducaList = data;
         });
         
@@ -70,8 +70,15 @@ isAdmin = false;
       //const id = this.activatedRoute.snapshot.params['id'];
       const id = this.editEducaList.id
       this.educationService.updateEducation(id, this.editEducaList).subscribe(
+        data => {
+          alert("educacion modificada");
+          window.location.reload();
+          
+        }, err =>{
+          alert("Error al modificar educacion");
+          window.location.reload();
+       }
       );
-      window.location.reload();
     }
 
     onCreate(): void {
@@ -80,15 +87,16 @@ isAdmin = false;
   
       this.educationService.saveEducation(newEducation).subscribe(
         data => {
-          alert("Education creada");
+          alert("Educacion creada");
           //this.router.navigate(['/']);
         }
       )
-      window.location.reload();
+      alert("educacion creado")!;
     }
 
     modificarEducacion(educaId: number) {
       this.educationService.updateEducation(educaId, this.editEducaList).subscribe();
+      alert("Educación modificada");
       window.location.reload();
     }
 

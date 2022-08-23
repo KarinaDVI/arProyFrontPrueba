@@ -8,7 +8,8 @@ import { Educa } from '../models/Educa';
 })
 export class EducationService {
 
-  educationUrl = 'https://apikbhero.herokuapp.com'
+  //educationUrl ='http://localhost:8080/'
+  educationUrl = 'https://apikbprueba.herokuapp.com/'
 
   
   constructor(private http:HttpClient) { }
@@ -22,25 +23,25 @@ export class EducationService {
 }
 
   getAllEducation(): Observable<Educa[]>{
-    return this.http.get<Educa[]>(this.educationUrl+'/apikb/education/all').pipe(
+    return this.http.get<Educa[]>(this.educationUrl+'apikb/education/all').pipe(
       catchError(this.handleError<Educa[]>('getAllEducation',[]))
   );
 }
   public saveEducation(newEducation:Educa):Observable<any>{
-    return this.http.post<any>(this.educationUrl + '/apikb/education/',newEducation);
+    return this.http.post<any>(this.educationUrl + 'apikb/education/',newEducation);
   }
 
   public getEducation(id: number):Observable<Educa> {
-    return this.http.get<Educa>(this.educationUrl + `/apikb/education/one/${id}`);
+    return this.http.get<Educa>(this.educationUrl + `apikb/education/one/${id}`);
   }
  
   public updateEducation(id:number, education:Educa):Observable<any>{
-    return this.http.put<any>(this.educationUrl + `/apikb/education/edit/${id}`,education);
+    return this.http.put<any>(this.educationUrl + `apikb/education/edit/${id}`,education);
   }
 
   public deleteEducation(educationList: Educa[], educationParaBorrar: Educa ): Observable<Educa> {
     educationList.filter(p => p.id !== educationParaBorrar.id)
-    return this.http.delete<any>(this.educationUrl + "/apikb/education/" + educationParaBorrar.id);
+    return this.http.delete<any>(this.educationUrl + "apikb/education/" + educationParaBorrar.id);
   }
 
   /* Smat
