@@ -11,6 +11,7 @@ import { TokenService } from 'src/app/services/token.service';
 export class ProjectsComponent implements OnInit {
   
   projectList:Project[]=[];
+  //Ver si cambiar a que sea vector(antes no era)
   listProject: Project | any;
 
   name:string="";
@@ -46,6 +47,7 @@ export class ProjectsComponent implements OnInit {
 
       this.projectService.getProject(project.id!).subscribe(
         data => {
+          //Ver si cambiar a que sea vector
           this.listProject = data;
         });
         
@@ -53,8 +55,10 @@ export class ProjectsComponent implements OnInit {
   borrarProjectDeLista(projectParaBorrar: Project): void{
     this.projectList= this.projectList.filter(p => p.id !== projectParaBorrar.id)
     this.projectService.deleteProject(this.projectList, projectParaBorrar).subscribe();
+    alert("Proyecto borrado");
     window.location.reload();
   }
+
   onUpdate(): void {
     //const id = this.activatedRoute.snapshot.params['id'];
     const id = this.listProject.id
@@ -76,6 +80,7 @@ export class ProjectsComponent implements OnInit {
         alert("Proyecto creado");
       }
     )
+    alert("Proyecto creado")!;
     window.location.reload();
   }
 

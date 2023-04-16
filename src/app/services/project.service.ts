@@ -39,8 +39,8 @@ export class ProjectService {
     return this.http.put<any>(this.projectUrl + `apikb/project/edit/${id}`,project);
   }
 
-  public deleteProject(projectList: Project[], projectParaBorrar: Project ): 
-  Observable<Project> {projectList.filter(p => p.id !== projectParaBorrar.id)
+  public deleteProject(projectList: Project[], projectParaBorrar: Project ): Observable<Project> 
+  {projectList.filter(p => p.id !== projectParaBorrar.id)
     return this.http.delete<any>(this.projectUrl + "apikb/project/" + projectParaBorrar.id);
   }
 
