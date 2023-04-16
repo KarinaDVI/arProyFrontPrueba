@@ -11,7 +11,8 @@ import { NuevoUsuario } from '../models/nuevo-usuario';
 export class AuthService {
 
   //authURL ='http://localhost:8080/auth/'
-  authURL = 'https://apikbprueba.herokuapp.com/auth/'
+  //authURL = 'https://apikbprueba.herokuapp.com/auth/'
+  authURL ='https://apikb-backend.onrender.com/auth/'
   constructor(private httpClient: HttpClient) { }
 
   public nuevo(nuevoUsuario: NuevoUsuario): Observable<any>{

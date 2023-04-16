@@ -10,7 +10,8 @@ import { Persona } from '../models/Persona';
 export class AboutServiceService {
 
   //aboutUrl ='http://localhost:8080/'
-  aboutUrl = 'https://apikbprueba.herokuapp.com/'
+  //aboutUrl = 'https://apikbprueba.herokuapp.com/'
+  aboutUrl = 'https://apikb-backend.onrender.com/'
 
   constructor(private http:HttpClient) { }
 

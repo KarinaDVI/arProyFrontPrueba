@@ -9,7 +9,8 @@ import { Educa } from '../models/Educa';
 export class EducationService {
 
   //educationUrl ='http://localhost:8080/'
-  educationUrl = 'https://apikbprueba.herokuapp.com/'
+  //educationUrl = 'https://apikbprueba.herokuapp.com/'
+  educationUrl ='https://apikb-backend.onrender.com/'
 
   
   constructor(private http:HttpClient) { }

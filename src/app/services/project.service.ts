@@ -9,7 +9,8 @@ import { Project } from '../models/Project';
 export class ProjectService {
 
    //projectUrl ='http://localhost:8080/'
-  projectUrl = 'https://apikbprueba.herokuapp.com/'
+  //projectUrl = 'https://apikbprueba.herokuapp.com/'
+  projectUrl ='https://apikb-backend.onrender.com/'
 
   constructor(private http:HttpClient) { }
 

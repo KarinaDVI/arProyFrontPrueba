@@ -8,8 +8,9 @@ import { Skill } from '../models/Skill';
 })
 export class SkillServiceService {
 
-  //skillUrl ='http://localhost:8080/'
-  skillUrl = 'https://apikbprueba.herokuapp.com/'
+ //skillUrl ='http://localhost:8080/'
+  // skillUrl = 'https://apikbprueba.herokuapp.com/'
+  skillUrl ='https://apikb-backend.onrender.com/'
 
   
   constructor(private http:HttpClient) { }

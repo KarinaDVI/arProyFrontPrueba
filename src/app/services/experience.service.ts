@@ -8,8 +8,9 @@ import { Experience } from '../models/Experience';
 })
 export class ExperienceService {
 
-  //experienceUrl ='http://localhost:8080/'
-  experienceUrl = 'https://apikbprueba.herokuapp.com/'
+ // experienceUrl ='http://localhost:8080/'
+  //experienceUrl = 'https://apikbprueba.herokuapp.com/'
+  experienceUrl ='https://apikb-backend.onrender.com/'
 
   constructor(private http:HttpClient) { }
 
